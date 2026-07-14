@@ -1,0 +1,64 @@
+# ====================================================================
+# Office Table Tennis Tournament - Git Ignore Configuration
+# ====================================================================
+
+# --- Microsoft Office & Excel (Data Security) ---
+# Игнорируем любые реальные файлы базы данных, чтобы не слить данные коллег
+*.xlsx
+*.xls
+*.xlsm
+
+# Но разрешаем версионировать чистый шаблон, если вы решите его добавить
+!database/template.xlsx
+
+# Игнорируем временные файлы автосохранения Microsoft Office (лок-файлы)
+~$*.xlsx
+~$*.docx
+~$*.pptx
+~$*
+
+# --- Power Platform CLI & ALM ---
+# Игнорируем экспортированные архивные файлы решений (в репозитории должен быть только распакованный код)
+*.zip
+*.cab
+
+# Локальные настройки авторизации и профили Power Platform CLI
+.pac/
+pac-connector/
+*.auth.json
+auth.json
+
+# Локальные логи сборки и распаковки решений
+/out/
+/bin/
+/obj/
+*.log
+
+# --- VS Code & IDE ---
+# Настройки локального редактора (кроме общих рекомендаций)
+.vscode/*
+!.vscode/extensions.json
+!.vscode/tasks.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# --- OS & System Files ---
+# Временные файлы операционных систем
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# --- Local Environment & Secrets ---
+# Локальные файлы с переменными окружения (на случай локальных тестов скриптов)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem
+*.key
