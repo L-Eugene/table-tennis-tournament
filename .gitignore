@@ -62,3 +62,6 @@ Desktop.ini
 .env.production.local
 *.pem
 *.key
+
+# --- Libre Office Service Files ---
+.~*#
