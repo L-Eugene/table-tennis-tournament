@@ -1,0 +1,74 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_excelonlinebusiness": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "el_sharedexcelonlinebusiness_5a0c4"
+        },
+        "api": {
+          "name": "shared_excelonlinebusiness"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "26dcc559-f158-4c5d-8257-2b968ac69f7f"
+          },
+          "type": "Request",
+          "kind": "Button",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          }
+        }
+      },
+      "actions": {
+        "Список_строк_в_таблице": {
+          "runAfter": {},
+          "metadata": {
+            "01MY45SLIDOWAVVJCL5ZGZ5PRQYYLKAZ3V": "/General/PingPongDB.xlsx",
+            "operationMetadataId": "38e26b09-6746-49e7-afcd-5607b4164cf1"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_excelonlinebusiness",
+              "operationId": "GetItems",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_excelonlinebusiness"
+            },
+            "parameters": {
+              "source": "sites/epam.sharepoint.com,4c707e76-dd2f-4c21-9ec7-28c3789a59b6,79b5f248-afec-4399-b5c0-76b5190c3364",
+              "drive": "b!dn5wTC_dIUyexyjDeJpZtkjytXnsr5lDtcB2tRkMM2RvyjWLSfkSTon5GP6LTEPV",
+              "file": "01MY45SLIDOWAVVJCL5ZGZ5PRQYYLKAZ3V",
+              "table": "{00000000-000C-0000-FFFF-FFFF00000000}"
+            },
+            "authentication": {
+              "type": "Raw",
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+            }
+          }
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}
